@@ -1,0 +1,169 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+    <!-- ===== Common ===== -->
+    <sys:String x:Key="S.App.Tagline">Connected ATC · SimConnect</sys:String>
+    <sys:String x:Key="S.Btn.Settings">⚙  Settings</sys:String>
+    <sys:String x:Key="S.Btn.Save">💾  Save</sys:String>
+    <sys:String x:Key="S.Btn.Close">Close</sys:String>
+    <sys:String x:Key="S.Btn.TestVoice">▶  Test voice</sys:String>
+    <sys:String x:Key="S.Btn.Send">Send</sys:String>
+
+    <!-- ===== Main window ===== -->
+    <sys:String x:Key="S.Test.BannerTitle">⚠  TEST MODE ACTIVE</sys:String>
+    <sys:String x:Key="S.Test.BannerText">—  phase / controller validation disabled: every request is granted</sys:String>
+    <sys:String x:Key="S.Atc.VoiceToggle">ATC voice</sys:String>
+    <sys:String x:Key="S.Atc.TestMode">🧪 Test Mode</sys:String>
+    <sys:String x:Key="S.Atc.TestModeTip">Grants every request regardless of phase / frequency (bypasses validation).</sys:String>
+    <sys:String x:Key="S.Atc.TestBtn">▶  Test ATC (F1)</sys:String>
+    <sys:String x:Key="S.Sect.Aircraft">AIRCRAFT</sys:String>
+    <sys:String x:Key="S.Sect.NearestAirport">NEAREST AIRPORT</sys:String>
+    <sys:String x:Key="S.Sect.Flight">FLIGHT</sys:String>
+    <sys:String x:Key="S.Metric.AltMsl">ALT (MSL)</sys:String>
+    <sys:String x:Key="S.Metric.Agl">AGL</sys:String>
+    <sys:String x:Key="S.Metric.Hdg">HDG</sys:String>
+    <sys:String x:Key="S.Metric.State">STATE</sys:String>
+    <sys:String x:Key="S.Sect.FlightPlan">FLIGHT PLAN (SIMBRIEF)</sys:String>
+    <sys:String x:Key="S.Metric.Route">ROUTE</sys:String>
+    <sys:String x:Key="S.Metric.Cruise">CRUISE</sys:String>
+    <sys:String x:Key="S.Sect.Log">LOG</sys:String>
+    <sys:String x:Key="S.Console.Force">FORCE (TEST)</sys:String>
+    <sys:String x:Key="S.Console.Controller">Controller</sys:String>
+    <sys:String x:Key="S.Console.Phase">Phase</sys:String>
+    <sys:String x:Key="S.Console.Transcription">TRANSCRIPTION</sys:String>
+    <sys:String x:Key="S.Console.Intent">INTENT</sys:String>
+    <sys:String x:Key="S.Console.Decision">DECISION</sys:String>
+    <sys:String x:Key="S.Console.MicTip">Voice recognition (Whisper). If disabled: download the model in Settings ▸ Mic.</sys:String>
+
+    <!-- ===== Settings — tabs ===== -->
+    <sys:String x:Key="S.Tab.Start">🚀   Getting started</sys:String>
+    <sys:String x:Key="S.Tab.Language">🌐   Language</sys:String>
+    <sys:String x:Key="S.Tab.Voice">🔊   ATC voice</sys:String>
+    <sys:String x:Key="S.Tab.Mic">🎙   Mic</sys:String>
+    <sys:String x:Key="S.Tab.Audio">🎚   Audio &amp; radio</sys:String>
+    <sys:String x:Key="S.Tab.Atc">🛫   ATC</sys:String>
+    <sys:String x:Key="S.Tab.Transfers">📡   Handoffs</sys:String>
+    <sys:String x:Key="S.Tab.Advanced">⚙   Advanced (LLM)</sys:String>
+
+    <!-- ===== Settings — Getting started ===== -->
+    <sys:String x:Key="S.Start.Title">Welcome to WilcoATC</sys:String>
+    <sys:String x:Key="S.Start.Subtitle">A voice ATC connected to Microsoft Flight Simulator. Three things to set up to get going — everything else already works out of the box.</sys:String>
+    <sys:String x:Key="S.Start.Step1Title">1 · ATC voice</sys:String>
+    <sys:String x:Key="S.Start.Step1Hint">A neural voice (offline, no key) is downloaded on first launch. Listen to it; you can change it in the “ATC voice” tab.</sys:String>
+    <sys:String x:Key="S.Start.Step2Title">2 · Voice recognition (talk to ATC)</sys:String>
+    <sys:String x:Key="S.Start.Step2Hint">To use the 🎙 button and speak into your mic, download the Whisper model (offline, ~110 MB, once).</sys:String>
+    <sys:String x:Key="S.Start.Step3Title">3 · Flight plan (recommended)</sys:String>
+    <sys:String x:Key="S.Start.Step3Hint">Import your SimBrief flight to get the airline callsign, route and departure SID. Otherwise ATC uses the tail number.</sys:String>
+    <sys:String x:Key="S.Start.SimbriefLabel">SimBrief username (or Pilot ID)</sys:String>
+    <sys:String x:Key="S.Start.FinalNote">All detailed settings (audio, radio effect, handoffs, language…) are in the tabs on the left.</sys:String>
+    <sys:String x:Key="S.Btn.ImportSimbrief">⤓  Import from SimBrief</sys:String>
+    <sys:String x:Key="S.Btn.LoadOfp">📄  Load an OFP file…</sys:String>
+    <sys:String x:Key="S.Btn.DownloadVoiceModel">⤓  Download the voice model</sys:String>
+
+    <!-- ===== Settings — Language ===== -->
+    <sys:String x:Key="S.Lang.Title">Language</sys:String>
+    <sys:String x:Key="S.Lang.Subtitle">Sets both the app interface AND the ATC (spoken + recognized). Choosing French makes the interface and the ATC French.</sys:String>
+    <sys:String x:Key="S.Lang.Select">Application language</sys:String>
+    <sys:String x:Key="S.Lang.Hint">The change applies immediately. For ATC in another language, install a matching voice (ATC voice tab); recognition (Whisper) is already multilingual.</sys:String>
+    <sys:String x:Key="S.Lang.AddTitle">Add a language</sys:String>
+    <sys:String x:Key="S.Lang.AddHint">English and French are built in. To add another interface language, drop a translation file &lt;code&gt;.xaml (e.g. de.xaml) into the languages folder, then Refresh.</sys:String>
+    <sys:String x:Key="S.Btn.OpenLangFolder">📁  Open languages folder</sys:String>
+    <sys:String x:Key="S.Btn.Refresh">↻  Refresh</sys:String>
+
+    <!-- ===== Settings — ATC voice (TTS) ===== -->
+    <sys:String x:Key="S.Voice.Title">ATC voice (text-to-speech)</sys:String>
+    <sys:String x:Key="S.Voice.Subtitle">The default “Sherpa” engine is a native, offline, free neural voice.</sys:String>
+    <sys:String x:Key="S.Voice.Engine">Voice engine</sys:String>
+    <sys:String x:Key="S.Voice.EngineHint">Sherpa (recommended) = neural offline. Windows = fallback system voice. Google = cloud (key required).</sys:String>
+    <sys:String x:Key="S.Voice.Installed">Installed neural voice (Sherpa / Piper)</sys:String>
+    <sys:String x:Key="S.Voice.Speed">Speaking rate</sys:String>
+    <sys:String x:Key="S.Voice.AddVoice">Add a voice (incl. other languages)</sys:String>
+    <sys:String x:Key="S.Voice.AddVoiceHint">Download an extra voice from the sherpa-onnx catalog (German, Spanish, French…).</sys:String>
+    <sys:String x:Key="S.Btn.DownloadVoice">⤓  Download this voice</sys:String>
+    <sys:String x:Key="S.Btn.VoicesFolder">📁  Voices folder</sys:String>
+    <sys:String x:Key="S.Voice.WindowsVoice">Windows voice (fallback engine)</sys:String>
+    <sys:String x:Key="S.Voice.GoogleVoice">Google — voice (Google engine: WaveNet / Neural2 / Studio)</sys:String>
+    <sys:String x:Key="S.Voice.GoogleKey">Google — environment variable holding the API key (BYOK)</sys:String>
+
+    <!-- ===== Settings — Mic (STT) ===== -->
+    <sys:String x:Key="S.Mic.Title">Voice recognition (speech-to-text)</sys:String>
+    <sys:String x:Key="S.Mic.Subtitle">Talk to ATC with the 🎙 button of the pilot console (press = talk, press again = transcribe). Offline Whisper engine, no key.</sys:String>
+    <sys:String x:Key="S.Mic.Device">Microphone</sys:String>
+    <sys:String x:Key="S.Mic.Model">Recognition model</sys:String>
+    <sys:String x:Key="S.Mic.ModelHint">Multilingual Whisper model (many languages), ~110 MB, downloaded once. No key, no cloud.</sys:String>
+    <sys:String x:Key="S.Btn.DownloadSttModel">⤓  Download the model (Whisper, multilingual)</sys:String>
+    <sys:String x:Key="S.Mic.StatusInstalled">Voice recognition model installed (Whisper, multilingual).</sys:String>
+    <sys:String x:Key="S.Mic.StatusMissing">No model installed — voice recognition is unavailable.</sys:String>
+
+    <!-- ===== Settings — Audio & radio ===== -->
+    <sys:String x:Key="S.Audio.Title">Audio output &amp; radio effect</sys:String>
+    <sys:String x:Key="S.Audio.Subtitle">Choose where to output the ATC voice (headset, or a virtual cable like VB-CABLE to separate it from the game sound) and tune the radio effect.</sys:String>
+    <sys:String x:Key="S.Audio.OutputDevice">Output device</sys:String>
+    <sys:String x:Key="S.Audio.RadioEffect">Radio effect (realism)</sys:String>
+    <sys:String x:Key="S.Audio.BandPass">Band-pass 300–3000 Hz</sys:String>
+    <sys:String x:Key="S.Audio.Hiss">Background hiss</sys:String>
+    <sys:String x:Key="S.Audio.Squelch">Squelch click (open / close)</sys:String>
+    <sys:String x:Key="S.Audio.Saturation">Saturation / compression</sys:String>
+    <sys:String x:Key="S.Audio.Volume">Volume</sys:String>
+
+    <!-- ===== Settings — ATC ===== -->
+    <sys:String x:Key="S.AtcTab.Title">ATC behavior</sys:String>
+    <sys:String x:Key="S.AtcTab.Subtitle">Automatic contact, GSX integration and test mode.</sys:String>
+    <sys:String x:Key="S.AtcTab.AutoContact">Automatic initial contact</sys:String>
+    <sys:String x:Key="S.AtcTab.AutoContactHint">When you tune to a known station's frequency, ATC contacts you automatically.</sys:String>
+    <sys:String x:Key="S.AtcTab.Gsx">Trigger GSX on pushback</sys:String>
+    <sys:String x:Key="S.AtcTab.GsxHint">On pushback clearance, activate GSX auto-pushback (via beacon + parking brake).</sys:String>
+    <sys:String x:Key="S.AtcTab.TestMode">🧪 Test Mode</sys:String>
+    <sys:String x:Key="S.AtcTab.TestModeHint">ON = every request is GRANTED regardless of phase or frequency, and the “departed without clearance” warning is suppressed. The state machine and rules stay intact (just bypassed). An orange banner shows in the main window while it is active.</sys:String>
+
+    <!-- ===== Settings — Handoffs / Center ===== -->
+    <sys:String x:Key="S.Tr.Title">Frequency handoffs / Center</sys:String>
+    <sys:String x:Key="S.Tr.Subtitle">Tower / Ground / Departure / Approach frequencies come from OurAirports data. Center (en-route) has no reliable offline source.</sys:String>
+    <sys:String x:Key="S.Tr.Vatsim">VATSIM: real Center frequency if online</sys:String>
+    <sys:String x:Key="S.Tr.VatsimHint">If enabled and the controller is online on VATSIM, the real Center frequency is used.</sys:String>
+    <sys:String x:Key="S.Tr.CenterName">Center name</sys:String>
+    <sys:String x:Key="S.Tr.CenterNameHint">E.g. “Geneva” → “Geneva Center”. Filling this field ENABLES the Center handoff with the approximate frequency below (otherwise the Center handoff is skipped).</sys:String>
+    <sys:String x:Key="S.Tr.CenterFreq">Approximate Center frequency (MHz)</sys:String>
+
+    <!-- ===== Settings — Advanced (LLM) ===== -->
+    <sys:String x:Key="S.Adv.Title">Language generation (optional)</sys:String>
+    <sys:String x:Key="S.Adv.Subtitle">By default, ATC phrases come from templates (free, offline). A local (Ollama) or cloud LLM can make them more natural. Optional.</sys:String>
+    <sys:String x:Key="S.Adv.Mode">Mode</sys:String>
+    <sys:String x:Key="S.Adv.ModeHint">Off = free offline templates (recommended to start).</sys:String>
+    <sys:String x:Key="S.Adv.OllamaUrl">Ollama — URL</sys:String>
+    <sys:String x:Key="S.Adv.OllamaModel">Ollama — model</sys:String>
+    <sys:String x:Key="S.Adv.CloudUrl">Cloud — base URL (OpenAI-compatible)</sys:String>
+    <sys:String x:Key="S.Adv.CloudModel">Cloud — model</sys:String>
+    <sys:String x:Key="S.Adv.CloudKey">Cloud — environment variable holding the key (BYOK)</sys:String>
+
+    <!-- ===== Voice download dialog ===== -->
+    <sys:String x:Key="S.Dl.Title">Neural voice (sherpa-onnx / Piper)</sys:String>
+    <sys:String x:Key="S.Dl.Preparing">Preparing…</sys:String>
+    <sys:String x:Key="S.Dl.Downloading">Downloading…</sys:String>
+    <sys:String x:Key="S.Dl.Extracting">Extracting…</sys:String>
+    <sys:String x:Key="S.Dl.Installed">Installed.</sys:String>
+    <sys:String x:Key="S.Dl.Failed">Download failed.</sys:String>
+    <sys:String x:Key="S.Dl.ErrorPrefix">Error: </sys:String>
+
+    <!-- ===== Runtime state (VM) ===== -->
+    <sys:String x:Key="S.Status.Ready">Ready</sys:String>
+    <sys:String x:Key="S.Status.Transmitting">Transmitting…</sys:String>
+    <sys:String x:Key="S.Status.AudioError">Audio error</sys:String>
+    <sys:String x:Key="S.Status.Listening">listening to mic…</sys:String>
+    <sys:String x:Key="S.Status.Transcribing">transcribing…</sys:String>
+    <sys:String x:Key="S.Status.NothingHeard">nothing understood</sys:String>
+    <sys:String x:Key="S.Status.MicUnavailable">mic unavailable</sys:String>
+    <sys:String x:Key="S.Atc.StatusPrefix">ATC: </sys:String>
+    <sys:String x:Key="S.Atc.StatusDash">ATC: —</sys:String>
+    <sys:String x:Key="S.Readback.Yes">readback expected: YES</sys:String>
+    <sys:String x:Key="S.Readback.No">readback expected: no</sys:String>
+    <sys:String x:Key="S.Phase.Ground">ground</sys:String>
+    <sys:String x:Key="S.Phase.Air">air</sys:String>
+    <sys:String x:Key="S.Decision.Granted">GRANTED</sys:String>
+    <sys:String x:Key="S.Decision.Denied">DENIED</sys:String>
+    <sys:String x:Key="S.Btn.Speak">🎙  Speak</sys:String>
+    <sys:String x:Key="S.Btn.Transcribe">⏹  Transcribe</sys:String>
+    <sys:String x:Key="S.Waiting">Waiting for the simulator…</sys:String>
+
+</ResourceDictionary>

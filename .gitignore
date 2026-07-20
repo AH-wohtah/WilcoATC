@@ -1,0 +1,14 @@
+# Sorties de build .NET
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Données OurAirports téléchargées localement (stretch) — ne pas versionner
+data/*.csv
+
+# Ne PAS ignorer les DLL SimConnect embarquées : elles sont nécessaires au build.
+!libs/*.dll

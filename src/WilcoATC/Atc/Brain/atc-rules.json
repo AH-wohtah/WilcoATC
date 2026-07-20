@@ -1,0 +1,96 @@
+{
+  "version": 5,
+  "rules": [
+    {
+      "intent": "REQUEST_CLEARANCE",
+      "allowedPhases": ["PARKED", "PUSHBACK"],
+      "allowedControllers": ["Clearance", "Ground"],
+      "requireOnGround": true,
+      "approved": "{callsign}, cleared to {destination} via the {sid} departure, climb {initial_altitude}, squawk {squawk}.",
+      "approvedFr": "{callsign}, autorisé à destination de {destination} via le départ {sid}, montez initialement {initial_altitude}, transpondeur {squawk}.",
+      "approvedNoSid": "{callsign}, cleared to {destination} as filed, climb and maintain {initial_altitude}, squawk {squawk}.",
+      "approvedNoSidFr": "{callsign}, autorisé à destination de {destination} selon le plan déposé, montez et maintenez {initial_altitude}, transpondeur {squawk}."
+    },
+    {
+      "intent": "REQUEST_PUSHBACK",
+      "allowedPhases": ["PARKED"],
+      "allowedControllers": ["Ground", "Clearance"],
+      "requireOnGround": true,
+      "advanceToPhase": "PUSHBACK",
+      "approved": "{callsign}, pushback approved, facing {dir}.",
+      "approvedFr": "{callsign}, repoussage approuvé, face au {dir}."
+    },
+    {
+      "intent": "REQUEST_TAXI",
+      "allowedPhases": ["PARKED", "PUSHBACK"],
+      "allowedControllers": ["Ground"],
+      "requireOnGround": true,
+      "advanceToPhase": "TAXI_OUT",
+      "approved": "{callsign}, taxi to holding point runway {runway} via taxiway alpha, QNH one zero one three.",
+      "approvedFr": "{callsign}, roulez au point d'arrêt piste {runway} par le taxiway alpha, QNH one zero one three."
+    },
+    {
+      "intent": "READY_FOR_DEPARTURE",
+      "allowedPhases": ["TAXI_OUT"],
+      "allowedControllers": ["Tower"],
+      "requireOnGround": true,
+      "approved": "{callsign}, runway {runway}, cleared for takeoff.",
+      "approvedFr": "{callsign}, piste {runway}, autorisé au décollage."
+    },
+    {
+      "intent": "READBACK",
+      "allowedPhases": [],
+      "allowedControllers": [],
+      "approved": "{callsign}, readback correct.",
+      "approvedFr": "{callsign}, collationnement correct."
+    },
+    {
+      "intent": "CHECK_IN",
+      "allowedPhases": [],
+      "allowedControllers": [],
+      "approved": "{callsign}, {station}, good day, radar contact.",
+      "approvedFr": "{callsign}, {station}, bonjour, identifié radar."
+    },
+    {
+      "intent": "REPORT_APPROACH",
+      "allowedPhases": [],
+      "allowedControllers": [],
+      "approved": "{callsign}, roger, continue as cleared.",
+      "approvedFr": "{callsign}, bien reçu, poursuivez selon la clairance."
+    }
+  ],
+  "denials": {
+    "airborne": "{callsign}, unable, you are airborne.",
+    "wrongController": "{callsign}, unable, contact {expected} on {freq}.",
+    "wrongPhase": "{callsign}, unable at this time.",
+    "unknown": "{callsign}, say again."
+  },
+  "denialsFr": {
+    "airborne": "{callsign}, impossible, vous êtes en vol.",
+    "wrongController": "{callsign}, impossible, contactez {expected} sur {freq}.",
+    "wrongPhase": "{callsign}, impossible pour le moment.",
+    "unknown": "{callsign}, répétez votre message."
+  },
+  "events": {
+    "takeoff_no_clearance": {
+      "en": "{callsign}, {station}, you departed without takeoff clearance, contact tower immediately.",
+      "fr": "{callsign}, {station}, vous avez décollé sans autorisation, contactez la tour immédiatement."
+    },
+    "handoff_departure": {
+      "en": "{callsign}, radar contact, contact departure on {freq}.",
+      "fr": "{callsign}, contact radar, contactez le départ sur {freq}."
+    },
+    "approach": {
+      "en": "{callsign}, {station}, descend and maintain 3000 feet, expect ILS runway {runway}.",
+      "fr": "{callsign}, {station}, descendez et maintenez 3000 pieds, prévoyez l'ILS piste {runway}."
+    },
+    "landing": {
+      "en": "{callsign}, {station}, runway {runway}, cleared to land.",
+      "fr": "{callsign}, {station}, piste {runway}, autorisé à l'atterrissage."
+    },
+    "taxi_in": {
+      "en": "{callsign}, {station}, welcome, taxi to the gate, contact ground.",
+      "fr": "{callsign}, {station}, bienvenue, rejoignez le parking, contactez le sol."
+    }
+  }
+}

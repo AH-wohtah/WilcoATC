@@ -86,9 +86,9 @@ ATC replies with a full clearance, and you read it back. Continue through pushba
 - [x] SimConnect connection + live COM frequency reading
 - [x] Local neural voice + radio-effect pipeline
 - [x] Intent recognition + context validation
-- [-] Ground → departure flow (clearance, pushback, taxi, takeoff)
 - [x] SimBrief integration (destination, callsign, SID)
 - [x] In-flight frequency handoffs
+- [ ] Ground → departure flow (clearance, pushback, taxi, takeoff)
 - [ ] Arrival flow (approach, landing, taxi-in)
 - [ ] Coherent AI traffic sequencing
 - [ ] Worldwide procedure/sector data
@@ -116,12 +116,9 @@ Built on great free/open tools and data:
 ## Disclaimer
 
 For **flight simulation entertainment only**. Not for real-world navigation, flight training, or actual air traffic control. Procedures, SIDs, and frequencies may be illustrative or approximate. Not affiliated with Microsoft, SimBrief, VATSIM, or any aviation authority.
-
-Heads up: this is an alpha release. You will run into bugs — lots of them, really a lot. Use it knowingly and at your own risk.
-
-Want to contribute, or just curious? Join our Discord: https://discord.gg/z4GgaS6Nnk
-
-Prefer to simply request a feature or report a bug without joining 
+⚠️ Heads up: this is an alpha release. You will run into bugs — lots of them, really a lot. Use it knowingly and at your own risk.
+Want to contribute, or just curious? Join our Discord: https://discord.gg/wilcoatc
+Prefer to simply request a feature or report a bug without joining the Discord? Open an issue here: https://github.com/ggtnt/wilcoatc
 
 ## License
 

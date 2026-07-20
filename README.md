@@ -116,6 +116,7 @@ Built on great free/open tools and data:
 ## Disclaimer
 
 For **flight simulation entertainment only**. Not for real-world navigation, flight training, or actual air traffic control. Procedures, SIDs, and frequencies may be illustrative or approximate. Not affiliated with Microsoft, SimBrief, VATSIM, or any aviation authority.
+
 ⚠️ Heads up: this is an alpha release. You will run into bugs — lots of them, really a lot. Use it knowingly and at your own risk.
 Want to contribute, or just curious? Join our Discord: https://discord.gg/wilcoatc
 Prefer to simply request a feature or report a bug without joining the Discord? Open an issue here: https://github.com/ggtnt/wilcoatc

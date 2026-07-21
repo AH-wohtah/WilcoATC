@@ -1,0 +1,188 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+    <sys:String x:Key="S.App.Tagline">Verbundenes ATC · SimConnect</sys:String>
+    <sys:String x:Key="S.Btn.Settings">⚙  Einstellungen</sys:String>
+    <sys:String x:Key="S.Btn.Save">💾  Speichern</sys:String>
+    <sys:String x:Key="S.Btn.Close">Schließen</sys:String>
+    <sys:String x:Key="S.Btn.TestVoice">▶  Stimme testen</sys:String>
+    <sys:String x:Key="S.Btn.Send">Senden</sys:String>
+
+    <sys:String x:Key="S.Test.BannerTitle">⚠  TESTMODUS AKTIV</sys:String>
+    <sys:String x:Key="S.Test.BannerText">&#8212;  Lotsen-/Bodenpr&#252;fung deaktiviert: jede Anfrage wird genehmigt</sys:String>
+    <sys:String x:Key="S.Atc.VoiceToggle">ATC-Stimme</sys:String>
+    <sys:String x:Key="S.Atc.TestMode">🧪 Testmodus</sys:String>
+    <sys:String x:Key="S.Atc.TestModeTip">Genehmigt jede Anfrage unabh&#228;ngig von Frequenz oder Bodenstatus (umgeht die verbleibenden Pr&#252;fungen).</sys:String>
+    <sys:String x:Key="S.Atc.TestBtn">▶  ATC testen (F1)</sys:String>
+    <sys:String x:Key="S.Sect.Aircraft">FLUGZEUG</sys:String>
+    <sys:String x:Key="S.Sect.NearestAirport">NÄCHSTER FLUGHAFEN</sys:String>
+    <sys:String x:Key="S.Sect.Flight">FLUG</sys:String>
+    <sys:String x:Key="S.Metric.AltMsl">ALT (MSL)</sys:String>
+    <sys:String x:Key="S.Metric.Agl">AGL</sys:String>
+    <sys:String x:Key="S.Metric.Hdg">KURS</sys:String>
+    <sys:String x:Key="S.Metric.State">STATUS</sys:String>
+    <sys:String x:Key="S.Sect.FlightPlan">FLUGPLAN (SIMBRIEF)</sys:String>
+    <sys:String x:Key="S.Metric.Route">ROUTE</sys:String>
+    <sys:String x:Key="S.Metric.Cruise">REISEFLUG</sys:String>
+    <sys:String x:Key="S.Sect.Log">PROTOKOLL</sys:String>
+    <sys:String x:Key="S.Console.Force">ERZWINGEN (TEST)</sys:String>
+    <sys:String x:Key="S.Console.Controller">Lotse</sys:String>
+    <sys:String x:Key="S.Console.Transcription">TRANSKRIPTION</sys:String>
+    <sys:String x:Key="S.Console.Intent">ABSICHT</sys:String>
+    <sys:String x:Key="S.Console.Decision">ENTSCHEIDUNG</sys:String>
+    <sys:String x:Key="S.Console.MicTip">Spracherkennung. Falls deaktiviert: Modell unter Einstellungen &#9656; Mikro herunterladen.</sys:String>
+
+    <sys:String x:Key="S.Tab.Start">🚀   Erste Schritte</sys:String>
+    <sys:String x:Key="S.Tab.Language">🌐   Sprache</sys:String>
+    <sys:String x:Key="S.Tab.Voice">🔊   ATC-Stimme</sys:String>
+    <sys:String x:Key="S.Tab.Mic">🎙   Mikro</sys:String>
+    <sys:String x:Key="S.Tab.Audio">🎚   Audio &amp; Funk</sys:String>
+    <sys:String x:Key="S.Tab.Atc">🛫   ATC</sys:String>
+    <sys:String x:Key="S.Tab.Transfers">📡   Übergaben</sys:String>
+    <sys:String x:Key="S.Tab.Advanced">⚙   Erweitert (LLM)</sys:String>
+
+    <sys:String x:Key="S.Start.Title">Willkommen bei WilcoATC</sys:String>
+    <sys:String x:Key="S.Start.Subtitle">Ein Sprach-ATC verbunden mit Microsoft Flight Simulator. Drei Dinge zum Einrichten — alles andere funktioniert bereits standardmäßig.</sys:String>
+    <sys:String x:Key="S.Start.Step1Title">1 · ATC-Stimme</sys:String>
+    <sys:String x:Key="S.Start.Step1Hint">Eine neuronale Stimme (offline, ohne Schlüssel) wird beim ersten Start heruntergeladen. Hören Sie sie an; ändern können Sie sie im Tab „ATC-Stimme“.</sys:String>
+    <sys:String x:Key="S.Start.Step2Title">2 · Spracherkennung (mit ATC sprechen)</sys:String>
+    <sys:String x:Key="S.Start.Step2Hint">Um die &#127897;-Taste zu nutzen und ins Mikrofon zu sprechen, laden Sie das Erkennungsmodell herunter (offline, ~460 MB, einmalig).</sys:String>
+    <sys:String x:Key="S.Start.Step3Title">3 · Flugplan (empfohlen)</sys:String>
+    <sys:String x:Key="S.Start.Step3Hint">Importieren Sie Ihren SimBrief-Flug, um Rufzeichen, Route und Abflug-SID zu erhalten. Sonst nutzt ATC das Kennzeichen.</sys:String>
+    <sys:String x:Key="S.Start.SimbriefLabel">SimBrief-Benutzername (oder Pilot-ID)</sys:String>
+    <sys:String x:Key="S.Start.FinalNote">Alle detaillierten Einstellungen (Audio, Funkeffekt, Übergaben, Sprache…) finden Sie in den Tabs links.</sys:String>
+    <sys:String x:Key="S.Btn.ImportSimbrief">⤓  Aus SimBrief importieren</sys:String>
+    <sys:String x:Key="S.Btn.LoadOfp">📄  OFP-Datei laden…</sys:String>
+    <sys:String x:Key="S.Btn.DownloadVoiceModel">⤓  Sprachmodell herunterladen</sys:String>
+
+    <sys:String x:Key="S.Log.Title">Diagnose</sys:String>
+    <sys:String x:Key="S.Log.Hint">Jeder Start schreibt eine Protokolldatei: gefundene oder fehlende Abh&#228;ngigkeiten, Simulatorverbindung und jeder Fehler. Wenn die App beim Start nichts tut, steht hier der Grund. Die letzten 10 Starts werden aufbewahrt.</sys:String>
+    <sys:String x:Key="S.Btn.OpenLogs">&#128193;  Protokollordner &#246;ffnen</sys:String>
+
+    <sys:String x:Key="S.Lang.Title">Sprache</sys:String>
+    <sys:String x:Key="S.Lang.Subtitle">Legt die Sprache der App-Oberfläche fest. Der Funk bleibt immer auf Englisch.</sys:String>
+    <sys:String x:Key="S.Lang.Select">App-Sprache</sys:String>
+    <sys:String x:Key="S.Lang.Hint">Die Änderung wird sofort wirksam. ATC, Copilot und Umgebungsfunk sprechen immer Englisch (ICAO-Standardphraseologie); auch die Spracherkennung hört auf Englisch.</sys:String>
+    <sys:String x:Key="S.Lang.AddTitle">Sprache hinzufügen</sys:String>
+    <sys:String x:Key="S.Lang.AddHint">Um eine weitere Oberflächensprache hinzuzufügen, legen Sie eine Übersetzungsdatei &lt;code&gt;.xaml (z. B. sv.xaml) in den Sprachenordner und aktualisieren Sie.</sys:String>
+    <sys:String x:Key="S.Btn.OpenLangFolder">📁  Sprachenordner öffnen</sys:String>
+    <sys:String x:Key="S.Btn.Refresh">↻  Aktualisieren</sys:String>
+
+    <sys:String x:Key="S.Voice.Title">ATC-Stimme (Sprachausgabe)</sys:String>
+    <sys:String x:Key="S.Voice.Subtitle">Die Standard-Engine „Sherpa“ ist eine native, offline, kostenlose neuronale Stimme.</sys:String>
+    <sys:String x:Key="S.Voice.Engine">Sprach-Engine</sys:String>
+    <sys:String x:Key="S.Voice.EngineHint">Sherpa (empfohlen) = neuronal offline. Windows = System-Ersatzstimme. Google = Cloud (Schlüssel erforderlich).</sys:String>
+    <sys:String x:Key="S.Voice.Installed">Installierte neuronale Stimme (Sherpa / Piper)</sys:String>
+    <sys:String x:Key="S.Voice.Speed">Sprechgeschwindigkeit</sys:String>
+    <sys:String x:Key="S.Voice.AddVoice">Stimme hinzufügen</sys:String>
+    <sys:String x:Key="S.Voice.AddVoiceHint">Laden Sie eine zusätzliche englische Stimme (US / GB) aus dem sherpa-onnx-Katalog herunter. Mit mehreren installierten Stimmen erhält jeder Lotse eine eigene.</sys:String>
+    <sys:String x:Key="S.Btn.DownloadVoice">⤓  Diese Stimme herunterladen</sys:String>
+    <sys:String x:Key="S.Btn.VoicesFolder">📁  Stimmenordner</sys:String>
+    <sys:String x:Key="S.Voice.DownloadAllFmt">⤓  Alle {0} Stimmen herunterladen (~{1:F1} GB)</sys:String>
+    <sys:String x:Key="S.Voice.AllInstalled">✓  Alle Katalogstimmen sind installiert</sys:String>
+    <sys:String x:Key="S.Voice.DownloadAllHint">Lädt alle fehlenden Katalogstimmen nacheinander herunter. Sehr groß — Fenster schließen zum Abbrechen; bereits installierte Stimmen werden übersprungen.</sys:String>
+    <sys:String x:Key="S.Voice.WindowsVoice">Windows-Stimme (Ersatz-Engine)</sys:String>
+    <sys:String x:Key="S.Voice.GoogleVoice">Google — Stimme (Google-Engine: WaveNet / Neural2 / Studio)</sys:String>
+    <sys:String x:Key="S.Voice.GoogleKey">Google — Umgebungsvariable mit dem API-Schlüssel (BYOK)</sys:String>
+
+    <sys:String x:Key="S.Mic.Title">Spracherkennung (Speech-to-Text)</sys:String>
+    <sys:String x:Key="S.Mic.Subtitle">Sprechen Sie mit ATC &#252;ber die &#127897;-Taste der Pilotenkonsole (dr&#252;cken = sprechen, erneut dr&#252;cken = transkribieren). Offline-Engine, ohne Schl&#252;ssel.</sys:String>
+    <sys:String x:Key="S.Mic.Device">Mikrofon</sys:String>
+    <sys:String x:Key="S.Mic.Model">Erkennungsmodell</sys:String>
+    <sys:String x:Key="S.Mic.ModelHint">Parakeet TDT 0.6B (NVIDIA NeMo), ~460 MB, einmalig heruntergeladen. Kein Schl&#252;ssel, keine Cloud. Das genaueste hier verf&#252;gbare freie Offline-Modell: rund 40 % weniger Wortfehler als Whisper bei ATC-Sprechgruppen, ohne Geschwindigkeitsverlust.</sys:String>
+    <sys:String x:Key="S.Btn.DownloadSttModel">&#10515;  Modell herunterladen (Parakeet, ~460 MB)</sys:String>
+    <sys:String x:Key="S.Mic.StatusInstalled">Spracherkennungsmodell installiert.</sys:String>
+    <sys:String x:Key="S.Mic.StatusMissing">Kein Modell installiert — die Spracherkennung ist nicht verfügbar.</sys:String>
+
+    <sys:String x:Key="S.Audio.Title">Audioausgabe &amp; Funkeffekt</sys:String>
+    <sys:String x:Key="S.Audio.Subtitle">Wählen Sie, wohin die ATC-Stimme ausgegeben wird (Headset oder ein virtuelles Kabel wie VB-CABLE, um sie vom Spielton zu trennen) und stellen Sie den Funkeffekt ein.</sys:String>
+    <sys:String x:Key="S.Audio.OutputDevice">Ausgabegerät</sys:String>
+    <sys:String x:Key="S.Audio.RadioEffect">Funkeffekt (Realismus)</sys:String>
+    <sys:String x:Key="S.Audio.BandPass">Bandpass 300–3000 Hz</sys:String>
+    <sys:String x:Key="S.Audio.Hiss">Hintergrundrauschen</sys:String>
+    <sys:String x:Key="S.Audio.Squelch">Squelch-Klick (Öffnen / Schließen)</sys:String>
+    <sys:String x:Key="S.Audio.Saturation">Sättigung / Kompression</sys:String>
+    <sys:String x:Key="S.Audio.Volume">Lautstärke</sys:String>
+
+    <sys:String x:Key="S.AtcTab.Title">ATC-Verhalten</sys:String>
+    <sys:String x:Key="S.AtcTab.Subtitle">Automatischer Kontakt, GSX-Integration und Testmodus.</sys:String>
+    <sys:String x:Key="S.AtcTab.AutoContact">Automatischer Erstkontakt</sys:String>
+    <sys:String x:Key="S.AtcTab.AutoContactHint">Wenn Sie die Frequenz einer bekannten Station einstellen, kontaktiert ATC Sie automatisch.</sys:String>
+    <sys:String x:Key="S.AtcTab.Gsx">GSX beim Pushback auslösen</sys:String>
+    <sys:String x:Key="S.AtcTab.GsxHint">Bei Pushback-Freigabe wird GSX-Auto-Pushback aktiviert (über Beacon + Feststellbremse).</sys:String>
+    <sys:String x:Key="S.AtcTab.TestMode">🧪 Testmodus</sys:String>
+    <sys:String x:Key="S.AtcTab.TestModeHint">EIN = jede Anfrage wird GENEHMIGT, unabhängig von Phase oder Frequenz, und die Warnung „ohne Freigabe gestartet“ wird unterdrückt. Zustandsautomat und Regeln bleiben intakt (nur umgangen). Ein oranges Banner erscheint im Hauptfenster, solange aktiv.</sys:String>
+
+    <sys:String x:Key="S.Tr.Title">Frequenzübergaben / Center</sys:String>
+    <sys:String x:Key="S.Tr.Subtitle">Tower-/Ground-/Departure-/Approach-Frequenzen stammen aus OurAirports-Daten. Center (en-route) hat keine zuverlässige Offline-Quelle.</sys:String>
+    <sys:String x:Key="S.Tr.Vatsim">VATSIM: echte Center-Frequenz wenn online</sys:String>
+    <sys:String x:Key="S.Tr.VatsimHint">Wenn aktiviert und der Lotse auf VATSIM online ist, wird die echte Center-Frequenz verwendet.</sys:String>
+    <sys:String x:Key="S.Tr.CenterName">Center-Name</sys:String>
+    <sys:String x:Key="S.Tr.CenterNameHint">Z. B. „Geneva“ → „Geneva Center“. Das Ausfüllen dieses Feldes AKTIVIERT die Center-Übergabe mit der ungefähren Frequenz unten (sonst wird die Center-Übergabe übersprungen).</sys:String>
+    <sys:String x:Key="S.Tr.CenterFreq">Ungefähre Center-Frequenz (MHz)</sys:String>
+
+    <sys:String x:Key="S.Adv.Title">Sprachgenerierung (optional)</sys:String>
+    <sys:String x:Key="S.Adv.Subtitle">Standardmäßig stammen ATC-Phrasen aus Vorlagen (kostenlos, offline). Ein lokales (Ollama) oder Cloud-LLM kann sie natürlicher machen. Optional.</sys:String>
+    <sys:String x:Key="S.Adv.Mode">Modus</sys:String>
+    <sys:String x:Key="S.Adv.ModeHint">Aus = kostenlose Offline-Vorlagen (für den Anfang empfohlen).</sys:String>
+    <sys:String x:Key="S.Adv.OllamaUrl">Ollama — URL</sys:String>
+    <sys:String x:Key="S.Adv.OllamaModel">Ollama — Modell</sys:String>
+    <sys:String x:Key="S.Adv.CloudUrl">Cloud — Basis-URL (OpenAI-kompatibel)</sys:String>
+    <sys:String x:Key="S.Adv.CloudModel">Cloud — Modell</sys:String>
+    <sys:String x:Key="S.Adv.CloudKey">Cloud — Umgebungsvariable mit dem Schlüssel (BYOK)</sys:String>
+
+    <sys:String x:Key="S.Dl.Title">Neuronale Stimme (sherpa-onnx / Piper)</sys:String>
+    <sys:String x:Key="S.Dl.Preparing">Wird vorbereitet…</sys:String>
+    <sys:String x:Key="S.Dl.Downloading">Wird heruntergeladen…</sys:String>
+    <sys:String x:Key="S.Dl.Extracting">Wird entpackt…</sys:String>
+    <sys:String x:Key="S.Dl.Installed">installiert.</sys:String>
+    <sys:String x:Key="S.Dl.Failed">Download fehlgeschlagen.</sys:String>
+    <sys:String x:Key="S.Dl.ErrorPrefix">Fehler: </sys:String>
+
+    <sys:String x:Key="S.Status.Ready">Bereit</sys:String>
+    <sys:String x:Key="S.Status.Transmitting">Sendet…</sys:String>
+    <sys:String x:Key="S.Status.AudioError">Audiofehler</sys:String>
+    <sys:String x:Key="S.Status.Listening">höre Mikro…</sys:String>
+    <sys:String x:Key="S.Status.Transcribing">transkribiere…</sys:String>
+    <sys:String x:Key="S.Status.NothingHeard">nichts verstanden</sys:String>
+    <sys:String x:Key="S.Status.MicUnavailable">Mikro nicht verfügbar</sys:String>
+    <sys:String x:Key="S.Atc.StatusPrefix">ATC: </sys:String>
+    <sys:String x:Key="S.Atc.StatusDash">ATC: —</sys:String>
+    <sys:String x:Key="S.Readback.Yes">Rückmeldung erwartet: JA</sys:String>
+    <sys:String x:Key="S.Readback.No">Rückmeldung erwartet: nein</sys:String>
+    <sys:String x:Key="S.Phase.Ground">Boden</sys:String>
+    <sys:String x:Key="S.Phase.Air">Luft</sys:String>
+    <sys:String x:Key="S.Decision.Granted">GENEHMIGT</sys:String>
+    <sys:String x:Key="S.Decision.Denied">ABGELEHNT</sys:String>
+    <sys:String x:Key="S.Btn.Speak">🎙  Sprechen</sys:String>
+    <sys:String x:Key="S.Btn.Transcribe">⏹  Transkribieren</sys:String>
+    <sys:String x:Key="S.Waiting">Warte auf den Simulator…</sys:String>
+
+    <sys:String x:Key="S.Tab.Immersion">🎧   Immersion</sys:String>
+    <sys:String x:Key="S.Imm.Title">Immersion</sys:String>
+    <sys:String x:Key="S.Imm.Subtitle">Ein virtueller Erster Offizier, Funkverkehr im Hintergrund und Kabinen-Soundpakete. Jedes lässt sich einzeln ein- und ausschalten.</sys:String>
+    <sys:String x:Key="S.Imm.Copilot">Virtueller Erster Offizier (Callouts)</sys:String>
+    <sys:String x:Key="S.Imm.CopilotHint">Ruft 80 Knoten, V1, Rotate, V2, positive Steigrate, Höhen, Minimums und die Landecallouts — live vom Simulator gesteuert. Über die Bordsprechanlage (ohne Funkeffekt).</sys:String>
+    <sys:String x:Key="S.Imm.Checklists">Auch Checklisten ansagen</sys:String>
+    <sys:String x:Key="S.Imm.VSpeeds">Referenzgeschwindigkeiten (kt)</sys:String>
+    <sys:String x:Key="S.Imm.VSpeedsHint">SimConnect liefert keine zuverlässigen V-Speeds — stellen Sie sie für Ihr Flugzeug und Gewicht ein.</sys:String>
+    <sys:String x:Key="S.Imm.Chatter">Funkverkehr im Hintergrund</sys:String>
+    <sys:String x:Key="S.Imm.ChatterHint">Andere Crews und Lotsen, die auf der Frequenz sprechen, um den Funk zu beleben. Rein kosmetisch — im Simulator wird kein Verkehr erzeugt. Spricht nie über den echten ATC.</sys:String>
+    <sys:String x:Key="S.Imm.ChatterGap">Abstand zwischen Übertragungen (min — max)</sys:String>
+    <sys:String x:Key="S.Imm.ComingSoon">DEMNÄCHST</sys:String>
+    <sys:String x:Key="S.Imm.CabinComingSoonHint">Kabinen-Soundpakete sind noch nicht verfügbar — die Einstellungen unten sind deaktiviert und es wird kein Kabinenton abgespielt. Sie werden in einem späteren Update freigeschaltet.</sys:String>
+    <sys:String x:Key="S.Imm.Cabin">Kabinen-Soundpakete</sys:String>
+    <sys:String x:Key="S.Imm.CabinHint">Kabinenansagen und Atmosphäre, ausgelöst durch die Flugphase (Boarding, Sicherheitsdemo, Start, Reiseflug, Sinkflug, Landung, Aussteigen).</sys:String>
+    <sys:String x:Key="S.Imm.CabinPack">Soundpaket</sys:String>
+    <sys:String x:Key="S.Imm.CabinAddHint">Ein Unterordner je Paket (oder Dateien direkt ablegen). Formate: .ogg, .wav, .mp3. Die Benennung ist flexibel — der Dateiname muss sein Schlüsselwort nur ENTHALTEN: boarding / safety / takeoff / cruise / descent / landing / deboarding (z. B. „PA_Boarding.ogg“). Die Liste zeigt, wie viele Ereignisse erkannt wurden; nach dem Hinzufügen auf Aktualisieren klicken.</sys:String>
+    <sys:String x:Key="S.Btn.OpenCabinFolder">📁  Kabinenpaket-Ordner öffnen</sys:String>
+    <sys:String x:Key="S.Imm.Experimental">EXPERIMENTELL</sys:String>
+    <sys:String x:Key="S.Imm.CopilotVoice">Stimme des Ersten Offiziers</sys:String>
+    <sys:String x:Key="S.Imm.CopilotVoiceHint">Wählen Sie eine andere Stimme als die des ATC, damit das Cockpit lebendig wirkt. Weitere Stimmen im Tab „ATC-Stimme“ installieren.</sys:String>
+    <sys:String x:Key="S.Ptt.Title">Push-to-Talk-Taste</sys:String>
+    <sys:String x:Key="S.Ptt.Hint">Halten Sie diese Taste, um mit dem ATC zu sprechen — funktioniert auch, wenn der Simulator den Fokus hat. Die Taste wird nie abgefangen: sie erreicht weiterhin den Simulator.</sys:String>
+    <sys:String x:Key="S.Ptt.SetKey">Taste festlegen…</sys:String>
+    <sys:String x:Key="S.Ptt.Clear">Löschen</sys:String>
+
+</ResourceDictionary>

@@ -10,6 +10,7 @@
       "WilcoATC/1.0.0": {
         "dependencies": {
           "NAudio": "2.2.1",
+          "NAudio.Vorbis": "1.5.0",
           "SharpCompress": "0.50.0",
           "System.Speech": "8.0.0",
           "org.k2fsa.sherpa.onnx": "1.13.4",
@@ -1012,6 +1013,18 @@
           }
         }
       },
+      "NAudio.Vorbis/1.5.0": {
+        "dependencies": {
+          "NAudio.Core": "2.2.1",
+          "NVorbis": "0.10.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/NAudio.Vorbis.dll": {
+            "assemblyVersion": "1.5.0.0",
+            "fileVersion": "1.5.0.0"
+          }
+        }
+      },
       "NAudio.Wasapi/2.2.1": {
         "dependencies": {
           "NAudio.Core": "2.2.1"
@@ -1042,6 +1055,14 @@
           "lib/netstandard2.0/NAudio.WinMM.dll": {
             "assemblyVersion": "2.2.1.0",
             "fileVersion": "2.2.1.0"
+          }
+        }
+      },
+      "NVorbis/0.10.4": {
+        "runtime": {
+          "lib/netstandard2.0/NVorbis.dll": {
+            "assemblyVersion": "0.10.4.0",
+            "fileVersion": "0.10.4.0"
           }
         }
       },
@@ -1136,6 +1157,13 @@
       "path": "naudio.midi/2.2.1",
       "hashPath": "naudio.midi.2.2.1.nupkg.sha512"
     },
+    "NAudio.Vorbis/1.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-llJMmUnFf0FGf4G1FKNftxt+Vc1CvBCSul0Ugbv/RahGbpKF2p+ujSEJHybPjl9b4FjbK8O2vRFIcRGcVfAooA==",
+      "path": "naudio.vorbis/1.5.0",
+      "hashPath": "naudio.vorbis.1.5.0.nupkg.sha512"
+    },
     "NAudio.Wasapi/2.2.1": {
       "type": "package",
       "serviceable": true,
@@ -1156,6 +1184,13 @@
       "sha512": "sha512-xFHRFwH4x6aq3IxRbewvO33ugJRvZFEOfO62i7uQJRUNW2cnu6BeBTHUS0JD5KBucZbHZaYqxQG8dwZ47ezQuQ==",
       "path": "naudio.winmm/2.2.1",
       "hashPath": "naudio.winmm.2.2.1.nupkg.sha512"
+    },
+    "NVorbis/0.10.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WYnil3DhQHzjCY0dM9I2B3r1vWip90AOuQd25KE4NrjPQBg0tBJFluRLm5YPnO5ZLDmwrfosY8jCQGQRmWI/Pg==",
+      "path": "nvorbis/0.10.4",
+      "hashPath": "nvorbis.0.10.4.nupkg.sha512"
     },
     "org.k2fsa.sherpa.onnx/1.13.4": {
       "type": "package",

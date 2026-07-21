@@ -1,0 +1,69 @@
+{
+  "version": 9,
+  "rules": [
+    {
+      "intent": "REQUEST_CLEARANCE",
+      "allowedControllers": ["Clearance", "Ground"],
+      "requireOnGround": true,
+      "approved": "{callsign}, cleared to {destination} via the {sid} departure, climb {initial_altitude}, squawk {squawk}.",
+      "approvedNoSid": "{callsign}, cleared to {destination} as filed, climb and maintain {initial_altitude}, squawk {squawk}."
+    },
+    {
+      "intent": "REQUEST_PUSHBACK",
+      "allowedControllers": ["Ground", "Clearance"],
+      "requireOnGround": true,
+      "advanceToPhase": "PUSHBACK",
+      "approved": "{callsign}, pushback approved, facing {dir}."
+    },
+    {
+      "intent": "REQUEST_TAXI",
+      "allowedControllers": ["Ground"],
+      "requireOnGround": true,
+      "advanceToPhase": "TAXI_OUT",
+      "approved": "{callsign}, taxi to holding point {runway} via taxiway alpha, QNH one zero one three."
+    },
+    {
+      "intent": "READY_FOR_DEPARTURE",
+      "allowedControllers": ["Tower"],
+      "requireOnGround": true,
+      "approved": "{callsign}, {runway}, cleared for takeoff."
+    },
+    {
+      "intent": "READBACK",
+      "allowedControllers": [],
+      "approved": "{callsign}, readback correct."
+    },
+    {
+      "intent": "CHECK_IN",
+      "allowedControllers": [],
+      "approved": "{callsign}, {station}, good day, radar contact."
+    },
+    {
+      "intent": "REPORT_APPROACH",
+      "allowedControllers": [],
+      "approved": "{callsign}, roger, continue as cleared."
+    }
+  ],
+  "denials": {
+    "airborne": "{callsign}, unable, you are airborne.",
+    "wrongController": "{callsign}, unable, contact {expected} on {freq}.",
+    "unknown": "{callsign}, say again."
+  },
+  "events": {
+    "takeoff_no_clearance": {
+      "en": "{callsign}, {station}, you departed without takeoff clearance, contact tower immediately."
+    },
+    "handoff_departure": {
+      "en": "{callsign}, radar contact, contact departure on {freq}."
+    },
+    "approach": {
+      "en": "{callsign}, {station}, descend and maintain 3000 feet, expect ILS approach, {runway}."
+    },
+    "landing": {
+      "en": "{callsign}, {station}, {runway}, cleared to land."
+    },
+    "taxi_in": {
+      "en": "{callsign}, {station}, welcome, taxi to the gate, contact ground."
+    }
+  }
+}

@@ -1,4 +1,4 @@
-# FreqWatch
+# WilcoATC
 
 Application desktop **Windows / WPF (.NET 8)** qui se connecte à **Microsoft Flight
 Simulator** (2024, compatible 2020) via **SimConnect**, détecte les changements de
@@ -85,13 +85,13 @@ Le `.csproj` gère les deux références automatiquement :
 
 **En ligne de commande :**
 ```powershell
-cd FreqWatch
+cd WilcoATC
 dotnet build -c Release
-dotnet run --project src\FreqWatch -c Release
+dotnet run --project src\WilcoATC -c Release
 ```
 
 **Dans Visual Studio :**
-1. Ouvre `FreqWatch.sln`.
+1. Ouvre `WilcoATC.sln`.
 2. Vérifie que la plateforme active est **x64**.
 3. F5.
 
@@ -105,11 +105,11 @@ Séparation nette **couche SimConnect** ↔ **UI** : l'UI ne référence **jamai
 SimConnect ; elle ne dépend que de l'interface `ISimConnectService` et de quelques DTO.
 
 ```
-FreqWatch/
-├─ FreqWatch.sln
+WilcoATC/
+├─ WilcoATC.sln
 ├─ libs/                     DLL SimConnect (managée + native)
 ├─ data/                     (stretch) CSV OurAirports, optionnels
-└─ src/FreqWatch/
+└─ src/WilcoATC/
    ├─ App.xaml(.cs)          Composition root : crée le service + le VM, les câble
    ├─ MainWindow.xaml(.cs)   UI cockpit (aucun type SimConnect)
    │
@@ -137,7 +137,7 @@ FreqWatch/
    │  ├─ FlightSnapshot.cs       vue consolidée des données de vol
    │  └─ AtcController.cs        déclencheurs auto/manuel -> génère -> parle
    │
-   ├─ Settings/              AppSettings + SettingsService (%APPDATA%\FreqWatch)
+   ├─ Settings/              AppSettings + SettingsService (%APPDATA%\WilcoATC)
    ├─ Formatting/            FrequencyFormatter, TransponderFormatter, AircraftFormatter
    ├─ Common/Geo.cs          distance haversine partagée
    ├─ ViewModels/           MainViewModel, SettingsViewModel, RelayCommand, …
@@ -182,10 +182,10 @@ Les fréquences sont demandées en **`Hz` (FLOAT64)**, et **non** en `Frequency 
 
 Affichage : `MHz = Hz ÷ 1 000 000`, arrondi et formaté à **3 décimales** → couvre
 proprement le **25 kHz** (`118.700`, `121.500`) **et le 8.33 kHz** (`118.305`).
-Voir le commentaire détaillé dans [`Formatting/FrequencyFormatter.cs`](src/FreqWatch/Formatting/FrequencyFormatter.cs).
+Voir le commentaire détaillé dans [`Formatting/FrequencyFormatter.cs`](src/WilcoATC/Formatting/FrequencyFormatter.cs).
 
 Le squawk (`TRANSPONDER CODE:1`, unité `BCO16`) est décodé quartet par quartet dans
-[`Formatting/TransponderFormatter.cs`](src/FreqWatch/Formatting/TransponderFormatter.cs).
+[`Formatting/TransponderFormatter.cs`](src/WilcoATC/Formatting/TransponderFormatter.cs).
 
 ## Détection de changement (le flag CHANGED)
 
@@ -208,8 +208,8 @@ atomiques (`COM1 ACTIVE → 118.700`, `COM2 ÉMISSION ON`, …).
 > comme BeyondATC / SayIntentions.
 
 **Boucle de bout en bout** : `données de vol → transmission ATC (texte) → TTS → filtre
-radio → son joué`. Trois interfaces découplées (dossiers [`Atc/`](src/FreqWatch/Atc/)
-et [`Audio/`](src/FreqWatch/Audio/)), faciles à remplacer :
+radio → son joué`. Trois interfaces découplées (dossiers [`Atc/`](src/WilcoATC/Atc/)
+et [`Audio/`](src/WilcoATC/Audio/)), faciles à remplacer :
 
 | Interface | Rôle | Défaut (gratuit, hors-ligne) | Option |
 |---|---|---|---|
@@ -217,7 +217,7 @@ et [`Audio/`](src/FreqWatch/Audio/)), faciles à remplacer :
 | `ITtsEngine` | Texte → PCM | **sherpa-onnx** (Piper/VITS **natif C#**) | Google Cloud TTS (BYOK) · voix Windows (secours) |
 | `RadioAudioPipeline` | Effet radio + lecture | **NAudio** (toujours) | — |
 
-**Effet radio** ([`RadioDsp`](src/FreqWatch/Audio/RadioDsp.cs)) : passe-bande ~300–3000 Hz
+**Effet radio** ([`RadioDsp`](src/WilcoATC/Audio/RadioDsp.cs)) : passe-bande ~300–3000 Hz
 (BiQuad), souffle de fond, **clic de squelch** à l'ouverture/fermeture, légère
 saturation. Chaque étage est activable dans les réglages.
 
@@ -230,7 +230,7 @@ saturation. Chaque étage est activable dans les réglages.
 - Un petit **délai aléatoire** précède chaque réponse (anti-effet « robot instantané »).
 
 ### Choisir le périphérique, la voix, activer le LLM
-Bouton **« ⚙ Réglages »** (persistés dans `%APPDATA%\FreqWatch\settings.json`) :
+Bouton **« ⚙ Réglages »** (persistés dans `%APPDATA%\WilcoATC\settings.json`) :
 - **Périphérique de sortie** : casque par défaut, ou un **câble virtuel** (VB-CABLE)
   pour une voie séparée du son du jeu.
 - **Moteur/voix TTS** : **sherpa-onnx** (défaut, natif) ; Google (BYOK) ; Windows (secours).
@@ -240,7 +240,7 @@ Bouton **« ⚙ Réglages »** (persistés dans `%APPDATA%\FreqWatch\settings.js
 - **Langue ATC** : English (phraséologie OACI) ou Français.
 
 ### Voix neuronale par défaut : sherpa-onnx (Piper natif, 100 % offline)
-Le moteur par défaut est **sherpa-onnx** ([`SherpaOnnxTtsEngine`](src/FreqWatch/Audio/SherpaOnnxTtsEngine.cs)) :
+Le moteur par défaut est **sherpa-onnx** ([`SherpaOnnxTtsEngine`](src/WilcoATC/Audio/SherpaOnnxTtsEngine.cs)) :
 Piper/VITS exécuté **nativement dans le process .NET** (package NuGet `org.k2fsa.sherpa.onnx`).
 **Aucun Python, aucun `piper.exe`, aucune clé API.** Le PCM est généré en mémoire puis
 passe dans le pipeline radio.
@@ -250,7 +250,7 @@ passe dans le pipeline radio.
   **`vits-piper-en_US-ryan-medium`** depuis
   `https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-en_US-ryan-medium.tar.bz2`
   et l'extrait (pur managé, via SharpCompress + `System.Formats.Tar`).
-- **Où sont stockées les voix ?** Dans **`%LOCALAPPDATA%\FreqWatch\voices\`** — un dossier
+- **Où sont stockées les voix ?** Dans **`%LOCALAPPDATA%\WilcoATC\voices\`** — un dossier
   par voix, contenant `*.onnx` + `tokens.txt` + `espeak-ng-data/` (format sherpa-onnx).
 - **Ajouter une voix (dont des voix françaises)** : Réglages → **« Ajouter une voix »**
   propose un catalogue téléchargeable en un clic, incluant des voix **françaises** Piper
@@ -259,7 +259,7 @@ passe dans le pipeline radio.
   Réglages → **Langue ATC = Français**.
 - **Voix personnalisée** : décompressez n'importe quel modèle TTS sherpa-onnx
   (https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models) dans
-  `%LOCALAPPDATA%\FreqWatch\voices\`, puis Réglages → **Dossier des voix** pour rafraîchir.
+  `%LOCALAPPDATA%\WilcoATC\voices\`, puis Réglages → **Dossier des voix** pour rafraîchir.
   Vitesse d'élocution réglable ; speaker id géré pour les modèles multi-locuteurs.
 - **Modèle manquant / erreur** → repli automatique sur la **voix Windows** (SAPI), et le
   bouton « Télécharger la voix par défaut » (Réglages) relance l'installation.
@@ -271,8 +271,8 @@ passe dans le pipeline radio.
 Voix neuronales de très bonne qualité (WaveNet / Neural2 / Studio). **Palier gratuit
 mensuel** Google, puis payant : c'est une option **BYOK**, jamais requise.
 1. Console Google Cloud → activez l'API **Cloud Text-to-Speech** → créez une **clé API**.
-2. Mettez la clé dans une **variable d'environnement** (défaut `FREQWATCH_GOOGLE_KEY`) :
-   `setx FREQWATCH_GOOGLE_KEY "votre_clé"` (rouvrez l'app ensuite). La clé n'est
+2. Mettez la clé dans une **variable d'environnement** (défaut `WilcoATC_GOOGLE_KEY`) :
+   `setx WilcoATC_GOOGLE_KEY "votre_clé"` (rouvrez l'app ensuite). La clé n'est
    **jamais** stockée dans l'application.
 3. Réglages → moteur **Google**, choisissez une voix (ex. `en-US-Neural2-D`,
    `fr-FR-Neural2-B` ; la liste est éditable pour saisir n'importe quel nom de voix Google).
@@ -285,7 +285,7 @@ mensuel** Google, puis payant : c'est une option **BYOK**, jamais requise.
   LLM **Ollama** (URL `http://localhost:11434`, modèle `llama3.2`).
 - **Cloud (BYOK)** : Réglages → LLM **Cloud**, renseignez URL/modèle OpenAI-compatible
   et **le nom de la variable d'environnement** contenant votre clé (défaut
-  `FREQWATCH_LLM_KEY`). La clé n'est jamais stockée dans l'app.
+  `WilcoATC_LLM_KEY`). La clé n'est jamais stockée dans l'app.
 - En cas d'échec (LLM injoignable, timeout, pas de clé) → **repli templates**.
 
 ### 100 % gratuit et hors-ligne
@@ -298,8 +298,8 @@ Le pilote formule une requête (**voix bientôt, ou texte dès maintenant**), l'
 déduit l'intention, la **valide selon l'état courant**, puis répond (clairance ou refus)
 via la voix radio. Boucle : `texte/STT → intention → validation contexte → réponse`.
 
-Quatre briques découplées ([`Atc/Understanding`](src/FreqWatch/Atc/Understanding/),
-[`Atc/Context`](src/FreqWatch/Atc/Context/), [`Atc/Brain`](src/FreqWatch/Atc/Brain/)) :
+Quatre briques découplées ([`Atc/Understanding`](src/WilcoATC/Atc/Understanding/),
+[`Atc/Context`](src/WilcoATC/Atc/Context/), [`Atc/Brain`](src/WilcoATC/Atc/Brain/)) :
 
 | Brique | Rôle | Défaut (gratuit, offline) | Option |
 |---|---|---|---|
@@ -308,7 +308,7 @@ Quatre briques découplées ([`Atc/Understanding`](src/FreqWatch/Atc/Understandi
 | `FlightContextProvider` | état courant | phase de vol + contrôleur, dérivés des SimVars | override manuel du contrôleur (test) |
 | `AtcBrain` | valider + répondre | **table de règles JSON (EN + FR)** | — |
 
-**Grammaire bilingue** ([`GrammarIntentRecognizer`](src/FreqWatch/Atc/Understanding/GrammarIntentRecognizer.cs)) :
+**Grammaire bilingue** ([`GrammarIntentRecognizer`](src/WilcoATC/Atc/Understanding/GrammarIntentRecognizer.cs)) :
 pilotée par la **langue effective** (réglage « Langue des transmissions », `Auto` suit la voix).
 Chaque intention a ses mots-clés **français ET anglais** — ex. `REQUEST_PUSHBACK` = « repoussage /
 repousser / push », `REQUEST_TAXI` = « roulage », `READY_FOR_DEPARTURE` = « prêt(s) au départ »,
@@ -321,7 +321,7 @@ pour distinguer un échec ASR d'un échec de grammaire.
 passe en état **« en attente de collationnement »**. Tant qu'il est actif, un message qui
 reprend les termes de l'ATC, contient un accusé (« approuvé / correct / roger / wilco / reçu »)
 ou n'est que le callsign est classé **READBACK** (jamais revalidé comme requête, donc jamais
-refusé pour cause de phase) → réponse « collationnement correct » ([`ReadbackDetector`](src/FreqWatch/Atc/ReadbackDetector.cs)).
+refusé pour cause de phase) → réponse « collationnement correct » ([`ReadbackDetector`](src/WilcoATC/Atc/ReadbackDetector.cs)).
 Une requête **déjà accordée** obtient « c'est déjà approuvé » au lieu d'un refus de phase.
 Le panneau debug affiche l'état *collationnement attendu : OUI/non* et, par message, s'il est
 classé REQUEST ou READBACK.
@@ -336,7 +336,7 @@ et **`BRAKE PARKING INDICATOR`** : `PARKED → PUSHBACK → TAXI_OUT → TAKEOFF
 APPROACH → LANDING → TAXI_IN`. **Contrôleur** = type de la station résolue depuis la
 fréquence COM active (Ground / Tower / Clearance / Approach / Center).
 
-**Table de règles** éditable : `%LOCALAPPDATA%\FreqWatch\atc-rules.json` (créée au 1er
+**Table de règles** éditable : `%LOCALAPPDATA%\WilcoATC\atc-rules.json` (créée au 1er
 lancement depuis la ressource embarquée). Chaque règle : intention → phases autorisées +
 contrôleurs autorisés + `requireOnGround` + phrase d'accord ; les refus sont contextuels
 (en vol / mauvaise fréquence + redirection / mauvaise phase).
@@ -355,7 +355,7 @@ sur Tour + redirection, ready-for-departure, taxi) passent à l'exécution.
 
 ## Plan de vol SimBrief + indicatif réaliste
 
-**Indicatif parlé** ([`CallsignFormatter`](src/FreqWatch/Atc/Planning/CallsignFormatter.cs), réutilisé
+**Indicatif parlé** ([`CallsignFormatter`](src/WilcoATC/Atc/Planning/CallsignFormatter.cs), réutilisé
 partout — clairance ET contact initial) :
 - vol de ligne → **télophonie compagnie + numéro** (ex. `UAE 231` → « Emirates 231 »), via le
   dataset **OpenFlights `airlines.dat`** embarqué (ICAO → callsign) ;
@@ -367,7 +367,7 @@ puis **« Importer depuis SimBrief »**. Appel de l'API **gratuite et sans clé*
 `https://www.simbrief.com/api/xml.fetcher.php?username={username}&json=1`. Un mauvais username →
 message d'erreur clair, sans crash. On peut aussi **charger un fichier OFP XML** exporté.
 
-Le [`FlightPlan`](src/FreqWatch/Atc/Planning/FlightPlan.cs) extrait : origine/destination (ICAO+nom),
+Le [`FlightPlan`](src/WilcoATC/Atc/Planning/FlightPlan.cs) extrait : origine/destination (ICAO+nom),
 alternate, route, **altitude de croisière** (`general.initial_altitude`), compagnie + numéro
 (`general.icao_airline`/`flight_number`), callsign (`atc.callsign`), avion (`aircraft.icaocode`).
 Un encart **« Plan de vol chargé »** (callsign, départ → destination, croisière, avion) confirme l'import.
@@ -387,11 +387,11 @@ Un encart **« Plan de vol chargé »** (callsign, départ → destination, croi
 
 **Langue automatique** : le réglage *Langue ATC = **Auto*** (défaut) fait **parler l'ATC dans
 la langue de la voix TTS sélectionnée** — une voix `fr_FR` déclenche des transmissions en
-**français**, une voix `en_US` en **anglais** ([`LanguageResolver`](src/FreqWatch/Atc/LanguageResolver.cs)).
+**français**, une voix `en_US` en **anglais** ([`LanguageResolver`](src/WilcoATC/Atc/LanguageResolver.cs)).
 On peut aussi forcer English ou Français. Les réponses (clairance, refus) et les
-transmissions proactives existent en EN et FR dans [`atc-rules.json`](src/FreqWatch/Atc/Brain/atc-rules.json).
+transmissions proactives existent en EN et FR dans [`atc-rules.json`](src/WilcoATC/Atc/Brain/atc-rules.json).
 
-**ATC proactif** ([`FlightDirector`](src/FreqWatch/Atc/FlightDirector.cs)) : au-delà des
+**ATC proactif** ([`FlightDirector`](src/WilcoATC/Atc/FlightDirector.cs)) : au-delà des
 réponses aux requêtes, l'ATC **initie** des transmissions aux transitions de phase de vol —
 l'ATC te parle tout au long du vol :
 
@@ -410,15 +410,15 @@ Chaque événement est joué **une fois par vol** (réarmé au retour au parking
 ## SID de clairance & transferts de fréquence
 
 **SID dans la clairance** : le vrai **SID** est extrait du `navlog` SimBrief (fixes où
-`is_sid_star=="1"`, nom dans `via_airway`) et prononcé par [`SidFormatter`](src/FreqWatch/Formatting/SidFormatter.cs)
+`is_sid_star=="1"`, nom dans `via_airway`) et prononcé par [`SidFormatter`](src/WilcoATC/Formatting/SidFormatter.cs)
 (`SOSAL2Y` → « SOSAL 2 Yankee »). La clairance devient *« …autorisé à destination de Genève
 **via le départ SOSAL 2 Yankee**, montez initialement 5000 pieds, transpondeur … »* (EN :
 *« …via the SOSAL 2 Yankee departure… »*). **Sans SID / sans plan** → repli « selon le plan
 déposé » / « as filed ».
 
-**Transferts de fréquence en vol** ([`ControllerSequencer`](src/FreqWatch/Atc/ControllerSequencer.cs)) :
+**Transferts de fréquence en vol** ([`ControllerSequencer`](src/WilcoATC/Atc/ControllerSequencer.cs)) :
 l'ATC enchaîne les positions et te dit quand changer de fréquence, avec la fréquence
-**prononcée chiffre par chiffre** ([`FrequencyFormatter.Speak`](src/FreqWatch/Formatting/FrequencyFormatter.cs),
+**prononcée chiffre par chiffre** ([`FrequencyFormatter.Speak`](src/WilcoATC/Formatting/FrequencyFormatter.cs),
 `128.500` → « un deux huit décimal cinq »). Déclencheurs (constantes ajustables) :
 
 | Transfert | Seuil |
@@ -433,7 +433,7 @@ l'ATC enchaîne les positions et te dit quand changer de fréquence, avec la fr�
 - **Terminales** (Sol/Tour/Départ/Approche) : **OurAirports** (`airport-frequencies.csv`) pour
   le terrain concerné — fiables.
 - **Centre** : pas de dataset gratuit fiable → si **VATSIM activé** (Réglages) et en ligne,
-  on récupère la vraie fréquence du contrôleur `*_CTR` de la région ([`VatsimClient`](src/FreqWatch/Atc/Vatsim/VatsimClient.cs)) ;
+  on récupère la vraie fréquence du contrôleur `*_CTR` de la région ([`VatsimClient`](src/WilcoATC/Atc/Vatsim/VatsimClient.cs)) ;
   sinon une valeur **approximative configurable** (log « fréquence Centre approximative »).
 
 Après le transfert, quand tu **te cales sur la nouvelle fréquence**, la détection de
@@ -444,7 +444,7 @@ changement COM déclenche le **check-in** sur la nouvelle station (contact initi
 Quand l'ATC **accorde le pushback**, l'app peut déclencher le pushback de **GSX Pro**
 (FSDreamTeam) — **sans module WASM**.
 
-**Mécanisme** ([`GsxGroundServices`](src/FreqWatch/Atc/GroundServices/GsxGroundServices.cs)) :
+**Mécanisme** ([`GsxGroundServices`](src/WilcoATC/Atc/GroundServices/GsxGroundServices.cs)) :
 le SimConnect standard ne peut pas écrire les LVARs de GSX, mais GSX a une option
 **auto-pushback** documentée : *frein de parking serré + phare anticollision (beacon)
 allumé → GSX demande le pushback*. L'app **allume donc le beacon** via SimConnect
@@ -468,7 +468,7 @@ limite à allumer le beacon (inoffensif). Architecture isolée derrière `IGroun
 
 ## Stretch : résolution de station (OurAirports)
 
-Bonus **totalement isolé** (dossier [`Stations/`](src/FreqWatch/Stations/)). Si tu
+Bonus **totalement isolé** (dossier [`Stations/`](src/WilcoATC/Stations/)). Si tu
 places `airports.csv` + `airport-frequencies.csv` dans [`data/`](data/) (voir
 [`data/README.txt`](data/README.txt)), l'app tente d'associer la fréquence active à
 l'aéroport le plus proche partageant cette fréquence et affiche son nom
@@ -485,4 +485,4 @@ l'aéroport le plus proche partageant cette fréquence et affiche son nom
 
 ---
 
-*FreqWatch — moniteur COM SimConnect. Aucune dépendance payante.*
+*WilcoATC — moniteur COM SimConnect. Aucune dépendance payante.*

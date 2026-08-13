@@ -1,32 +1,32 @@
-DLL SimConnect — dossier libs/
+SimConnect DLLs — libs/ folder
 ==============================
 
-Ce dossier contient les deux DLL nécessaires à SimConnect :
+This folder holds the two DLLs SimConnect needs:
 
-  1. Microsoft.FlightSimulator.SimConnect.dll   (wrapper managé .NET, référencé par le projet)
-  2. SimConnect.dll                              (bibliothèque NATIVE x64, copiée à côté de l'exe)
+  1. Microsoft.FlightSimulator.SimConnect.dll   (managed .NET wrapper, referenced by the project)
+  2. SimConnect.dll                              (NATIVE x64 library, copied next to the exe)
 
-Ces deux fichiers sont DÉJÀ présents ici (récupérés sur cette machine), donc la
-solution compile et tourne telle quelle.
-
---------------------------------------------------------------------------
-Où les récupérer soi-même (source officielle : le SDK MSFS)
---------------------------------------------------------------------------
-1. Dans MSFS (2020 ou 2024) : menu Options > General > Developers > active
-   « SDK ». Puis Devmode > Help > SDK Installer, installe le "Core" SDK.
-2. Le SDK s'installe par défaut dans :  C:\MSFS SDK\   (ou C:\MSFS 2024 SDK\)
-3. Les DLL se trouvent dans :
-       <SDK>\SimConnect SDK\lib\Microsoft.FlightSimulator.SimConnect.dll   (managé)
-       <SDK>\SimConnect SDK\lib\SimConnect.dll                             (natif x64)
-   Copie ces deux fichiers dans le présent dossier libs/.
+Both files are ALREADY here (taken from this machine), so the solution builds and runs
+as it stands.
 
 --------------------------------------------------------------------------
-Comment le projet les référence
+Getting them yourself (official source: the MSFS SDK)
 --------------------------------------------------------------------------
-- Le .csproj référence le wrapper managé via <Reference> + <HintPath> vers
-  libs\Microsoft.FlightSimulator.SimConnect.dll  (<Private>true</Private> => copié
-  dans le dossier de sortie).
-- La DLL NATIVE SimConnect.dll est copiée à côté de l'exécutable via un <None>
-  CopyToOutputDirectory. Elle DOIT se trouver à côté de FreqWatch.exe, sinon le
-  wrapper managé lève une DllNotFoundException au moment de la connexion.
-- Le projet cible x64 (Platforms/PlatformTarget) : SimConnect natif est 64 bits.
+1. In MSFS (2020 or 2024): Options > General > Developers > enable "SDK".
+   Then Devmode > Help > SDK Installer, and install the "Core" SDK.
+2. The SDK installs by default into:  C:\MSFS SDK\   (or C:\MSFS 2024 SDK\)
+3. The DLLs are in:
+       <SDK>\SimConnect SDK\lib\Microsoft.FlightSimulator.SimConnect.dll   (managed)
+       <SDK>\SimConnect SDK\lib\SimConnect.dll                             (native x64)
+   Copy both files into this libs/ folder.
+
+--------------------------------------------------------------------------
+How the project references them
+--------------------------------------------------------------------------
+- The .csproj references the managed wrapper with <Reference> + <HintPath> pointing at
+  libs\Microsoft.FlightSimulator.SimConnect.dll  (<Private>true</Private> => copied into
+  the output folder).
+- The NATIVE SimConnect.dll is copied next to the executable through a <None> with
+  CopyToOutputDirectory. It MUST sit next to WilcoATC.exe, otherwise the managed wrapper
+  throws DllNotFoundException when it tries to connect.
+- The project targets x64 (Platforms/PlatformTarget): native SimConnect is 64-bit.

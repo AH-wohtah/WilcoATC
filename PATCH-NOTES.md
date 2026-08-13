@@ -1,5 +1,98 @@
 # WilcoATC — Release Notes
 
+**26 July 2026**
+
+This update is about getting you flying faster and keeping the frequency data accurate:
+a first-run setup assistant, an in-window flight onboarding, community frequency
+reporting/import, and a cleaner nav rail — plus a standalone build that needs no .NET install.
+
+---
+
+## Summary
+
+| Topic | In short |
+|---|---|
+| [Setup assistant](#1-first-run-setup-assistant) | First-launch wizard: models, language, Push-to-Talk |
+| [Flight onboarding](#2-in-app-flight-onboarding) | Start a flight in-window, manual entry, choose the phase |
+| [Community frequencies](#3-community-frequencies) | Report a missing frequency + import validated ones |
+| [Interface](#4-interface) | RAD/FRQ/LOG/CFG become icons, simpler report form |
+| [Session data](#5-session-only-flight-data) | Flight data no longer persists between sessions |
+| [Fixes](#6-fixes) | Callsign on the radio, ground frequency, joystick PTT |
+| [Distribution](#distribution) | Self-contained folder, no .NET install required |
+
+---
+
+## 1. First-run setup assistant
+
+On the **very first launch only**, a guided wizard walks you through everything at once:
+
+- **Downloads all voice + speech-recognition models** up front, so nothing stalls mid-flight.
+- Asks for your **interface language**.
+- Lets you bind **Push-to-Talk** to a keyboard key **or an external device** — joystick,
+  throttle, gamepad. External buttons are read directly, with per-device button detection so
+  the right button is captured (see the *Button 17* fix in §6).
+
+---
+
+## 2. In-app flight onboarding
+
+Start a flight **directly in the window** — no separate pop-ups.
+
+- **Enter the flight yourself** (SimBrief is not required) — callsign, aircraft, origin,
+  destination — and pick the **airline** you want to fly.
+- **Choose your starting phase**: *at the gate*, *taxiing*, or *in flight*.
+- The **first read-back and first frequency now match your real flight** — e.g. *Brussels
+  Delivery* when you start at EBBR, with the correct company callsign.
+
+---
+
+## 3. Community frequencies
+
+The bundled dataset has gaps versus the sim; this update makes them fixable by the community.
+
+- **Report a missing frequency** in one click — **Discord username + airport + frequency** —
+  sent to the project so it can be validated and added.
+- **Import validated frequencies** from a CSV in Settings, so approved fixes are merged
+  straight back into the app. Live SimConnect facility data still takes priority when present.
+
+---
+
+## 4. Interface
+
+- **Nav rail icons**: the RAD / FRQ / LOG / CFG labels are now clean vector icons that light up
+  cyan when active.
+- **Simpler frequency report form**: it only handles *missing* frequencies now, and just asks
+  for your Discord username, the airport, and the frequency.
+- **Cleaner shell**: connection status sits top-right (grey dot + *Not connected* when the sim
+  is offline), and the ATC log shows an empty-state message when no flight is running.
+
+---
+
+## 5. Session-only flight data
+
+Flight information is **no longer kept between sessions**. Closing the app leaves a clean
+slate and an empty onboarding the next time you open it — no stale flight lingering.
+
+---
+
+## 6. Fixes
+
+- ATC now uses your **callsign** on the radio instead of reading out the flight number.
+- ATC **stays silent in menus** — it only talks once you're actually in the aircraft / flying.
+- **"Contact ground" now includes the actual ground frequency** when it exists.
+- Fixed a phantom **"Button 17"** stuck reading when assigning a controller button for
+  Push-to-Talk (baseline edge-detection + per-device button-count filtering).
+
+---
+
+## Distribution
+
+Ships as a **self-contained folder** — **no .NET installation required** on the target PC.
+A single-file `.exe` remains impossible (the SimConnect connector is a mixed-mode assembly
+.NET cannot embed), so distribution stays a folder you can zip and share.
+
+---
+
 **21 July 2026**
 
 A big session: full switch to English, a new speech recognition engine, a visual identity,
@@ -79,7 +172,7 @@ Other improvements:
   automatically.
 
 > The Parakeet model (~460 MB) was installed straight into
-> `%LOCALAPPDATA%\FreqWatch\asr\`. Deleting the folder is enough to roll back.
+> `%LOCALAPPDATA%\WilcoATC\asr\`. Deleting the folder is enough to roll back.
 
 ---
 
@@ -211,7 +304,7 @@ calls, ambient traffic consistent with the frequency) — never prohibitions.
 
 ## 8. Diagnostics
 
-**New: a log file on every launch**, in `%LOCALAPPDATA%\FreqWatch\logs\`. The last 10
+**New: a log file on every launch**, in `%LOCALAPPDATA%\WilcoATC\logs\`. The last 10
 startups are kept. An *Open logs folder* button is available in Settings ▸ Getting started.
 
 It opens **before the application's entry point** and writes unbuffered: a process that dies

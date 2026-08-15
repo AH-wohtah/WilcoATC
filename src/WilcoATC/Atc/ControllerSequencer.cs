@@ -151,7 +151,7 @@ public sealed class ControllerSequencer
             // Sans Centre exploitable, le Départ passe directement la main à l'Approche :
             // la chaîne reste vivante jusqu'à l'arrivée (c'est ce test EN PREMIER qui évite
             // de rebasculer indéfiniment vers un Centre qu'on ne peut pas annoncer).
-            ControllerPosition.Departure when skipCenter && descendingNearArrival
+            ControllerPosition.Departure when descendingNearArrival
                 => ControllerPosition.Approach,
             ControllerPosition.Departure when !skipCenter && s.MslFeet > DepartureToCenterAltFeet
                 => ControllerPosition.Center,
